@@ -14,7 +14,9 @@ export const SearchbarWrap = styled.header`
   padding-top: 12px;
   padding-bottom: 12px;
   color: #fff;
-  background-color: #3f51b5;
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #000000, #181b1c);
+  background: linear-gradient(to right, #000000, #181b1c);
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
@@ -24,18 +26,22 @@ export const SearchbarForm = styled.form`
   align-items: center;
   width: 100%;
   max-width: 600px;
-  background-color: #fff;
+  background-color: #2f2f2f38;
   border-radius: 3px;
   overflow: hidden;
+  &:focus-within {
+    box-shadow: 0 0 5px 0.1px rgba(255, 179, 0, 0.3);
+  }
 `;
 
 export const SearchbarButton = styled.button`
+  background-color: #5e5e5e38;
   display: inline-block;
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/3714/3714975.png');
-  background-size: 55%;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/6497/6497434.png');
+  background-size: 70%;
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0.6;
@@ -60,6 +66,8 @@ export const SearchbarSpan = styled.span`
 `;
 
 export const SearchbarInput = styled.input`
+  color: #fcfcfc;
+  background-color: transparent;
   display: inline-block;
   width: 100%;
   font: inherit;

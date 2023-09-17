@@ -6,14 +6,6 @@ export const SectionWrap = styled.section`
   text-align: center;
 `;
 
-// export const SectionContainer = styled.div`
-//   margin: 0 auto;
-//   padding: 32px;
-//   background-color: #fcfcfc;
-//   border-radius: 6px;
-//   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-// `;
-
 export const SectionTitle = styled.h1`
   font-size: 32px;
   letter-spacing: 3px;

@@ -9,20 +9,20 @@ import {
 
 export default class Searchbar extends Component {
   state = {
-    query: '',
+    qusearcQueryery: '',
   };
   // Function that updates the state based on user input
   handleChange = event => {
     const inputValue = event.target.value;
-    this.setState({ query: inputValue });
+    this.setState({ searcQuery: inputValue });
   };
   // Function that passes the state to the App.jsx
   handleSubmit = event => {
     event.preventDefault();
-    if (!this.state.query.trim()) {
+    if (!this.state.searcQuery.trim()) {
       return console.log(111);
     }
-    this.props.onSubmit(this.state.query);
+    this.props.onSubmit(this.state.searcQuery);
   };
 
   render() {
