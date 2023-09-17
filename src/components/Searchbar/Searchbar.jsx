@@ -20,7 +20,7 @@ export default class Searchbar extends Component {
   // Function that passes the state to the App.jsx
   handleSubmit = event => {
     event.preventDefault();
-    if (!this.state.searcQuery) {
+    if (!this.state.searcQuery.trim()) {
       return Notiflix.Report.failure(
         'PixQuery Failure',
         'Please enter a keyword or phrase to search for photos. We will do our best to find suitable images for you.',

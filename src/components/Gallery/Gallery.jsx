@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+import { InfinitySpin } from 'react-loader-spinner';
 // ============ Component ============
 import React, { Component } from 'react';
 // ============ API ============
@@ -110,6 +111,9 @@ export default class Gallery extends Component {
   };
   // LoadMore method fetches and appends more images to the current state.
   loadMore = async () => {
+    this.setState({
+      status: Status.PENDING,
+    });
     const data = await this.fetchImages(
       this.state.searchQuery,
       this.state.currentPage
@@ -117,6 +121,7 @@ export default class Gallery extends Component {
 
     this.setState(prevState => ({
       images: [...prevState.images, ...data.hits],
+      status: Status.RESOLVED,
     }));
   };
   // Increment the currentPage by 1 when a button is clicked.
@@ -136,7 +141,19 @@ export default class Gallery extends Component {
     }
 
     if (status === 'pending') {
-      return <div>Загрузка</div>;
+      return (
+        <>
+          {this.state.images.length > 0 && (
+            <ImageGallery images={this.state.images}></ImageGallery>
+          )}
+          <InfinitySpin
+            color="#b58e3f"
+            style={{
+              margin: '0 auto',
+            }}
+          />
+        </>
+      );
     }
 
     if (status === 'resolved') {
