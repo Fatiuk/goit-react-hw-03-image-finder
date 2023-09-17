@@ -38,6 +38,7 @@ export default class Gallery extends Component {
       this.setState(
         {
           searchQuery: this.props.searchQuery,
+          currentPage: 1,
         },
         // Call the updateImages function to fetch new images
         () => {
@@ -105,7 +106,18 @@ export default class Gallery extends Component {
       });
     }
   };
+  // LoadMore method fetches and appends more images to the current state.
+  loadMore = async () => {
+    const data = await this.fetchImages(
+      this.state.searchQuery,
+      this.state.currentPage
+    );
 
+    this.setState(prevState => ({
+      images: [...prevState.images, ...data.hits],
+    }));
+  };
+  // Increment the currentPage by 1 when a button is clicked.
   handleButtonClick = () => {
     // Increment currentPage (+1)
     const newPage = this.state.currentPage + 1;
