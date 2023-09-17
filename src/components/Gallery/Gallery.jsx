@@ -25,6 +25,7 @@ export default class Gallery extends Component {
     this.state = {
       searchQuery: this.props.searchQuery,
       currentPage: 1,
+      totalPages: 0,
       images: [],
       status: Status.IDLE,
       isLoading: false,
@@ -94,6 +95,7 @@ export default class Gallery extends Component {
       this.setState({
         images: [...data.hits],
         status: Status.RESOLVED,
+        totalPages: Math.ceil(data.totalHits / 12),
       });
     } catch (error) {
       Notiflix.Report.failure(
@@ -141,7 +143,9 @@ export default class Gallery extends Component {
       return (
         <>
           <ImageGallery images={this.state.images}></ImageGallery>
-          <Button onClick={this.handleButtonClick}></Button>
+          {this.state.currentPage < this.state.totalPages && (
+            <Button onClick={this.handleButtonClick}></Button>
+          )}
         </>
       );
     }
