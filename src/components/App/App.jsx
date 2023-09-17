@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Notiflix from 'notiflix';
 import * as PixabayAPI from '../../services/pixabay-api';
 // ============ Section ============
 import Section from '../Section/Section';
@@ -36,6 +37,13 @@ export default class App extends Component {
       this.state.searchQuery,
       this.state.currentPage
     );
+    if (data.hits.length === 0) {
+      return Notiflix.Report.warning(
+        'PixQuery Warning',
+        'Sorry, but we could not find any photos for your search query. Please try changing your keywords or search for something else.',
+        'Okay'
+      );
+    }
 
     console.log(this.state.searchQuery);
     console.log(this.state.currentPage);
