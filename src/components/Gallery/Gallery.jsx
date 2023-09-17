@@ -29,7 +29,6 @@ export default class Gallery extends Component {
       totalPages: 0,
       images: [],
       status: Status.IDLE,
-      isLoading: false,
     };
   }
   // Lifecycle method that runs when props or state change
