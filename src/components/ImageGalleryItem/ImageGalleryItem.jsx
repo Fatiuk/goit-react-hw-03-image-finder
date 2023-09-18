@@ -4,15 +4,39 @@ import {
   GalleryImage,
   GalleryInfo,
 } from './ImageGalleryItem.styled';
+import Modal from 'components/Modal/Modal';
 
 export default class ImageGalleryItem extends Component {
+  state = {
+    showModal: false,
+  };
+
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
   render() {
     const {
-      image: { webformatURL, tags, likes, views, comments, downloads },
+      image: {
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      },
     } = this.props; //   Get image (props) from prev component (ImageGallery.jsx)
     return (
       <GalleryItem>
-        <GalleryImage src={webformatURL} alt={tags} loading="lazy" />
+        <GalleryImage
+          src={webformatURL}
+          alt={tags}
+          loading="lazy"
+          onClick={this.toggleModal}
+        />
         <GalleryInfo>
           <p>
             <b>&#128077;</b>
@@ -31,6 +55,13 @@ export default class ImageGalleryItem extends Component {
             {downloads}
           </p>
         </GalleryInfo>
+        {this.state.showModal && (
+          <Modal
+            onClose={this.toggleModal}
+            largeImageURL={largeImageURL}
+            tags={tags}
+          ></Modal>
+        )}
       </GalleryItem>
     );
   }
