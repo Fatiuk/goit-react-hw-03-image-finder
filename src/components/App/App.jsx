@@ -18,6 +18,7 @@ export default class App extends Component {
   // Check if searchQuery has changed
   componentDidUpdate(_, prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
+      this.setState({ searchQuery: '' });
     }
   }
 
