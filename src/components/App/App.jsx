@@ -15,12 +15,6 @@ export default class App extends Component {
   handleSubmit = dataForm => {
     this.setState({ searchQuery: dataForm.trim() });
   };
-  // Check if searchQuery has changed
-  componentDidUpdate(_, prevState) {
-    if (prevState.searchQuery !== this.state.searchQuery) {
-      this.setState({ searchQuery: '' });
-    }
-  }
 
   render() {
     return (
